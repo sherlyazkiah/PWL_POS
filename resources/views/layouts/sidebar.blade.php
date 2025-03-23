@@ -46,13 +46,19 @@
                 </a> 
             </li> 
             <li class="nav-item"> 
-                <a href="{{ url('/item') }}" class="nav-link {{ ($activeMenu == 'item') ? 'active' : '' }}"> 
+                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'barang') ? 'active' : '' }}"> 
                     <i class="nav-icon far fa-list-alt"></i> 
                     <p>Goods Data</p> 
                 </a> 
             </li> 
 
             <li class="nav-header">Transaction Data</li> 
+            <li class="nav-item"> 
+                <a href="{{ url('/supplier') }}" class="nav-link {{ ($activeMenu == 'supplier') ? 'active' : '' }}"> 
+                    <i class="nav-icon fas fa-truck"></i> 
+                    <p>Supplier Data</p> 
+                </a> 
+            </li> 
             <li class="nav-item"> 
                 <a href="{{ url('/stock') }}" class="nav-link {{ ($activeMenu == 'stock') ? 'active' : '' }}"> 
                     <i class="nav-icon fas fa-cubes"></i> 
