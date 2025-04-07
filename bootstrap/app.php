@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'authorize' => App\Http\Middleware\AuthorizeUser::class,
+        ]); // middleware yg kita buat
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
