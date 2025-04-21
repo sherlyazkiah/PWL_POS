@@ -30,7 +30,7 @@
 
 <script>
     $(document).ready(function() {
-        $("#form-add").validate({
+        $("#form-add-kategori").validate({
             rules: {
                 kategori_kode: { required: true, minlength: 2 },
                 kategori_nama: { required: true, maxlength: 100 }

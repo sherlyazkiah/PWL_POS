@@ -62,7 +62,7 @@ class BarangController extends Controller
     {
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'kategori_id' => ['required', 'integer', 'exists:m_kategori,kategori_id'],
+                'kategori_id' => ['required', 'integer'],
                 'barang_kode' => ['required', 'min:3', 'max:20', 'unique:m_barang,barang_kode'],
                 'barang_nama' => ['required', 'string', 'max:100'],
                 'harga_beli' => ['required', 'numeric'],
@@ -92,7 +92,8 @@ class BarangController extends Controller
     {
         $barang = BarangModel::find($id);
         $level = LevelModel::select('level_id', 'level_nama')->get();
-        return view('barang.edit_ajax', ['barang' => $barang, 'level' => $level]);
+        $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
+        return view('barang.edit_ajax', ['barang' => $barang, 'level' => $level, 'kategori' => $kategori]);
     }
 
     public function update_ajax(Request $request, $id)
@@ -100,7 +101,7 @@ class BarangController extends Controller
         // Check if the request from Ajax
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
-                'kategori_id' => ['required', 'integer', 'exists:m_kategori,kategori_id'],
+                'kategori_id' => ['required', 'integer'],
                 'barang_kode' => ['required', 'min:3', 'max:20', 'unique:m_barang,barang_kode,' . $id . ',barang_id'],
                 'barang_nama' => ['required', 'string', 'max:100'],
                 'harga_beli' => ['required', 'numeric'],
@@ -298,5 +299,10 @@ class BarangController extends Controller
         $pdf->render();
 
         return $pdf->stream('Data Barang '.date('Y-m-d H:i:s').'.pdf');
+    }
+
+    public function show_ajax(string $id){
+        $barang = BarangModel::find($id);
+        return view('barang.show_ajax', ['barang' => $barang]);
     }
 }

@@ -15,6 +15,16 @@
                     <small id="error-barang_kode" class="error-text form-text text-danger"></small>
                 </div>
                 <div class="form-group">
+                    <label>Kategori</label>
+                    <select name="kategori_id" id="kategori_id" class="form-control" required>
+                        <option value="">- Pilih Kategori -</option>
+                        @foreach ($kategori as $k)
+                            <option value="{{ $k->kategori_id }}">{{ $k->kategori_nama }}</option>
+                        @endforeach
+                    </select>
+                    <small id="error-kategori_id" class="error-text form-text text-danger"></small>
+                </div>
+                <div class="form-group">
                     <label>Nama Barang</label>
                     <input type="text" name="barang_nama" id="barang_nama" class="form-control" required>
                     <small id="error-barang_nama" class="error-text form-text text-danger"></small>
@@ -40,8 +50,9 @@
 
 <script>
     $(document).ready(function() {
-        $("#form-add").validate({
+        $("#form-add-barang").validate({
             rules: {
+                kategori_id: { required: true, number: true },
                 barang_kode: { required: true, minlength: 3, maxlength: 50 },
                 barang_nama: { required: true, minlength: 3, maxlength: 100 },
                 harga_beli: { required: true, number: true, min: 0 },

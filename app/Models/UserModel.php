@@ -17,7 +17,7 @@ class UserModel extends Authenticatable
      * The attributes that are mass assignable.
      * @var array
      */
-    protected $fillable = ['level_id', 'username', 'nama', 'password'];
+    protected $fillable = ['level_id', 'username', 'nama', 'password', 'photo'];
     protected $hidden   = ['password']; // jangan ditampilkan saat select
     protected $casts    = ['password' => 'hashed']; // casting password agar otomatis di hash
 

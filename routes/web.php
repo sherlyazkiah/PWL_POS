@@ -6,6 +6,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::post('register', [RegisterController::class, 'postregister'])->name('regi
 Route::middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
 
     Route::get('/', [WelcomeController::class, 'index']);
+
+    Route::post('/profile-upload', [ProfileController::class, 'prosesFileUpload']);
 
     Route::group(['prefix' => 'user'], function (){ 
         Route::get('/', [UserController::class, 'index']);          // Menampilkan halaman awal user
@@ -97,7 +100,8 @@ Route::middleware(['auth'])->group(function(){ // artinya semua route di dalam g
         Route::get('/', [BarangController::class, 'index']);
         Route::post('/list', [BarangController::class, 'list']);
         Route::get('/create_ajax', [BarangController::class, 'create_ajax']); // ajax form create
-        Route::post('/barang_ajax', [BarangController::class, 'store_ajax']); // ajax store
+        Route::post('/ajax', [BarangController::class, 'store_ajax']); // ajax store
+        Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']);  // menampilkan detail barang ajax
         Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']); // ajax form edit
         Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']); // ajax update
         Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); // ajax form confirm

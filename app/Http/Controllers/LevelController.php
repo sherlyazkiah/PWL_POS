@@ -193,7 +193,7 @@ class LevelController extends Controller
                 'message' => 'Data level berhasil disimpan'
             ]);
         }
-        redirect('/');
+        return redirect('/');
     }
 
     public function edit_ajax(string $id)
