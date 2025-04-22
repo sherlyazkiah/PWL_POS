@@ -58,9 +58,9 @@ function modalAction(url= ''){
     });
 }
 
-var dataUser;
+var dataLevel;
 $(document).ready(function() { 
-    var dataUser = $('#table_level').DataTable({ 
+        dataLevel = $('#table_level').DataTable({ 
         serverSide: true, // if you want to use server-side processing 
         ajax: { 
             "url": "{{ url('level/list') }}", 
@@ -100,7 +100,7 @@ $(document).ready(function() {
     }); 
 
     $('#level_kode').on('change', function() {
-        dataUser.ajax.reload();
+        dataLevel.ajax.reload();
     });
 
 }); 

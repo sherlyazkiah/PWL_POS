@@ -56,7 +56,7 @@ function modalAction(url= ''){
 
 var dataUser;
 $(document).ready(function() { 
-    var dataUser = $('#table_user').DataTable({ 
+        dataUser = $('#table_user').DataTable({ 
         serverSide: true, // if you want to use server-side processing 
         ajax: { 
             "url": "{{ url('user/list') }}", 

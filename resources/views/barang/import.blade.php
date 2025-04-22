@@ -52,7 +52,7 @@ $(document).ready(function() {
                             title: 'Successful',
                             text: response.message
                         });
-                        tableItem.ajax.reload(); // Reload datatable
+                        dataBarang.ajax.reload(); // Reload datatable
                     } else { // if there is an error
                         $('.error-text').text('');
                         $.each(response.msgField, function(prefix, val) {

@@ -56,9 +56,9 @@ function modalAction(url= ''){
     });
 }
 
-var dataUser;
+var dataSupplier;
 $(document).ready(function() { 
-    var dataUser = $('#table_supplier').DataTable({ 
+        dataSupplier = $('#table_supplier').DataTable({ 
         serverSide: true, 
         ajax: { 
             "url": "{{ url('supplier/list') }}", 
@@ -109,7 +109,7 @@ $(document).ready(function() {
     }); 
 
     $('#nama_supplier').on('keyup change', function() {
-        dataUser.ajax.reload();
+        dataSupplier.ajax.reload();
     });
 
 }); 
