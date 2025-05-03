@@ -16,9 +16,9 @@
         <!-- Profile Card -->
         <div class="card card-primary card-outline">
             <div class="card-body box-profile text-center">
-                @if (session('photo'))
+                @if (Auth::user()->photo)
                     <img class="profile-user-img img-fluid img-circle"
-                         src="{{ asset('storage/' . session('photo')) }}"
+                         src="{{ asset('storage/' . Auth::user()->photo) }}"
                          style="object-fit: cover; width: 100px; height: 100px;"
                          alt="User profile picture">
                 @else

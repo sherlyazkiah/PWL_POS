@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\UserModel;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -13,9 +15,14 @@ class ProfileController extends Controller
         ]);
         $namaFile = $request->profile_photo->getClientOriginalName();
         $path = $request->profile_photo->storeAs('profile_photos', $namaFile, 'public');
-        session(['photo' => $path]); // disimpan di session sampai logout atau manual dihapus
+
+        // Simpan ke session
+        session(['photo' => $path]);
+
+        // Simpan ke database
+        $userId = Auth::id(); // Ambil ID user yang sedang login
+        UserModel::where('user_id', $userId)->update(['photo' => $path]);
+
         return back();
-        // Kirim path ke view via session flash hanya untuk 1 request setelah upload
-        // return back()->with('photo', $path);
     }
 }

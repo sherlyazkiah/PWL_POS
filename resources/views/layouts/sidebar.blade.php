@@ -59,18 +59,6 @@
                     <p>Supplier Data</p> 
                 </a> 
             </li> 
-            <li class="nav-item"> 
-                <a href="{{ url('/stock') }}" class="nav-link {{ ($activeMenu == 'stock') ? 'active' : '' }}"> 
-                    <i class="nav-icon fas fa-cubes"></i> 
-                    <p>Stock of Goods</p> 
-                </a> 
-            </li> 
-            <li class="nav-item"> 
-                <a href="{{ url('/sales') }}" class="nav-link {{ ($activeMenu == 'sales') ? 'active' : '' }}"> 
-                    <i class="nav-icon fas fa-cash-register"></i> 
-                    <p>Sales Transactions</p> 
-                </a> 
-            </li> 
         </ul> 
     </nav> 
 </div>
